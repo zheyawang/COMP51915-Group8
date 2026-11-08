@@ -13,4 +13,9 @@
 _Describe the win conditions for either player (i.e. the × or ○ player)_
 
 ## Build Instructions:
-_Describe how a new user should build the software_
+```bash
+mkdir -p build_dir
+cd build_dir
+cmake ../
+cmake --build .
+```
