@@ -18,4 +18,9 @@
 - A full board with no winner is a draw.
 
 ## Build Instructions:
-_Describe how a new user should build the software_
+```bash
+mkdir -p build_dir
+cd build_dir
+cmake ../
+cmake --build .
+```

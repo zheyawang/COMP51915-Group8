@@ -1,9 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include <cstdio>
 #include <cstdlib>
 
-const int M = 1 + pow(2, 7);  // You can change this for your specific game!
-const int N = 1 + pow(2, 3);  // You can change this for your specific game!
+const int M = 3;  // You can change this for your specific game!
+const int N = 3;  // You can change this for your specific game!
 
 void initBoard(int board[M][N], int M, int N) {
   for (int m = 0; m < M; m++) {
@@ -48,14 +48,13 @@ void gameLoop(int board[M][N], bool cont, int players, int M, int N) {
 int main(void) {
   int P;
   bool cont = true;
-  if (argc < 1) {
-    return EXIT_FAILURE;
-  } else {
-    std::cout << "Initialising game... How many players?";
+
+  std::cout << "Initialising game... How many players?";
     std::cin >> P;
-  }
+
   int board[M][N];
   initBoard(board, M, N);
   gameLoop(board, cont, P, M, N);
+
   return EXIT_SUCCESS;
 }
