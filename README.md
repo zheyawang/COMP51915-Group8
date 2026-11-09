@@ -5,7 +5,7 @@
 |----------|------|
 | zheyawang | Zheya Wang |
 | Tannii0312 | Kanti Suwannasai |
-| _username3_ | Yingjia Zheng |
+| isla-zheng | Yingjia Zheng |
 
 
 ## Win Conditions:
