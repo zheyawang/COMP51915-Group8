@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+#include "parse_board.h"
 
 const int M = 3;  // You can change this for your specific game!
 const int N = 3;  // You can change this for your specific game!
@@ -13,15 +14,7 @@ void initBoard(int board[M][N], int M, int N) {
   }
 }
 
-int parseBoard(int board[M][N]) {
-  /*
-   * This function is where you should define your win conditions.
-   * If player p in [1,...,P] has won, then you should return p; otherwise 0.
-   * If you find yourself with a great deal of spare time you might try
-   * rendering the board to the terminal here, too.
-   */
-  return 0;
-}
+
 
 void gameLoop(int board[M][N], bool cont, int players, int M, int N) {
   int winner;
