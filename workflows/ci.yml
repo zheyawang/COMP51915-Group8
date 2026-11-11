@@ -22,3 +22,8 @@ jobs:
      
       - name: Run unit tests
         run: ctest --test-dir build --output-on-failure
+      - name: Install cppcheck (linter)
+        run: sudo apt-get update && sudo apt-get install -y cppcheck
+
+      - name: Lint with cppcheck
+        run: cppcheck --enable=warning --error-exitcode=1 --quiet *.cpp
