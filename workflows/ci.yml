@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Configure the build
+        run: cmake -B build
+
+      - name: Build the game
+        run: cmake --build build
+     
+      - name: Run unit tests
+        run: ctest --test-dir build --output-on-failure
+      - name: Install cppcheck (linter)
+        run: sudo apt-get update && sudo apt-get install -y cppcheck
+
+      - name: Lint with cppcheck
+        run: cppcheck --enable=warning --error-exitcode=1 --quiet *.cpp
