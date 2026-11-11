@@ -23,6 +23,12 @@ target_include_directories(parse_board_lib
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+# Library for game input and move validation
+add_library(game_logic_lib game_logic.cpp)
+
+target_include_directories(game_logic_lib
+    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+)
 # Ensure the game running normally
 add_executable(tic_tac_toe main.cpp)
 
@@ -44,3 +50,14 @@ target_link_libraries(test_parse_board
 
 include(GoogleTest)
 gtest_discover_tests(test_parse_board)
+
+# Build the game logic tests
+add_executable(test_game_logic
+    tests/test_game_logic.cpp
+)
+
+target_link_libraries(test_game_logic
+    PRIVATE game_logic_lib GTest::gtest_main
+)
+
+gtest_discover_tests(test_game_logic)
