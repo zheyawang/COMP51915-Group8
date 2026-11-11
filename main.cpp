@@ -85,11 +85,10 @@ void gameLoop(int board[M][N], bool cont, int players, int M, int N) {
 }
 
 int main(void) {
-  int P;
+  int P = 2;
   bool cont = true;
 
-  std::cout << "Initialising game... How many players?";
-    std::cin >> P;
+  std::cout << "Tic-tac-toe! Player 1 is ×, Player 2 is ○." << std::endl;
 
   int board[M][N];
   initBoard(board, M, N);
