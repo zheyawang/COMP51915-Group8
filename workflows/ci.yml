@@ -19,3 +19,6 @@ jobs:
 
       - name: Build the game
         run: cmake --build build
+     
+      - name: Run unit tests
+        run: ctest --test-dir build --output-on-failure
