@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Install Google Test and cppcheck
+        run: |
+          sudo apt-get -o Acquire::Retries=5 update
+          sudo apt-get -o Acquire::Retries=5 install -y libgtest-dev cppcheck
+      
+      - name: Lint with cppcheck
+        run: cppcheck --enable=warning --error-exitcode=1 --quiet *.cpp
+
+      - name: Build the game
+        run: |
+          cmake -B build
+          cmake --build build
+
+      - name: Build and run parse_board tests
+        run: |
+          g++ -std=c++17 -I. tests/test_parse_board.cpp $(ls *.cpp | grep -v '^main.cpp$') -lgtest_main -lgtest -pthread -o test_parse_board
+          ./test_parse_board
+
+      - name: Build and run game_logic tests
+        run: |
+          g++ -std=c++17 -I. tests/test_game_logic.cpp $(ls *.cpp | grep -v '^main.cpp$') -lgtest_main -lgtest -pthread -o test_game_logic
+          ./test_game_logic
