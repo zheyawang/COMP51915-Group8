@@ -24,3 +24,13 @@ cd build_dir
 cmake ../
 cmake --build .
 ```
+
+## Starting the Game：
+```bash
+./tic_tac_toe
+```
+
+## Testing：
+```bash
+ctest --output-on-failure
+```
